@@ -1,4 +1,5 @@
 import os
+from .local_settings import CORS_ORIGIN_WHITELIST, ALLOWED_HOSTS
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -7,8 +8,8 @@ SECRET_KEY = 'kbo+7tn#igpms0@iqk6nq5f^t3_@z&5hwiqa!0m2o)wj4&(72o'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ALLOWED_HOSTS
+CORS_ORIGIN_WHITELIST = CORS_ORIGIN_WHITELIST
 
 # Application definition
 
@@ -21,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'hrautomationapi',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -31,6 +33,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'hrautomation.urls'
