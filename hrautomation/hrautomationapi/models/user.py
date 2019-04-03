@@ -7,4 +7,4 @@ class UserExtension(models.Model):
     is_engineer = models.BooleanField(default=False)
     is_hr = models.BooleanField(default=False)
     is_manager = models.BooleanField(default=False)
-    photo = models.CharField(default='', max_length=20)
+    photo = models.CharField(default='', max_length=20, blank=True, null=True)

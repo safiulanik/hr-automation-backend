@@ -14,7 +14,14 @@ class RequestListAPIView(ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Request.objects.filter(create_uid=user.id)
+        if user.role and user.role.is_hr:
+            return Request.objects.all()
+        elif user.role and user.role.is_manager:
+            return Request.objects.filter(status='hr_reviewed')
+        elif user.role and user.role.is_engineer:
+            return Request.objects.filter(create_uid=user.id)
+        else:
+            return []
 
 
 class RequestCreateAPIView(CreateAPIView):
