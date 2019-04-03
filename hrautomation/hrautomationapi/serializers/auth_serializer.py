@@ -1,15 +1,15 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
-from django.contrib.auth.models import User
 import re
 from rest_framework.validators import UniqueValidator
+from django.contrib.auth.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email',)
+        fields = ('email', 'first_name', 'id')
 
 
 def validate_email(email):
@@ -17,6 +17,12 @@ def validate_email(email):
     if not re.match(pattern, email):
         raise serializers.ValidationError('Required email format: <username>@misfit.tech')
     return email
+
+
+def validate_role(role):
+    if role not in ['engineer', 'hr', 'manager']:
+        raise serializers.ValidationError('Invalid role')
+    return role
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):
@@ -34,6 +40,8 @@ class UserSerializerWithToken(serializers.ModelSerializer):
     username = serializers.CharField(required=True, validators=[
         UniqueValidator(queryset=User.objects.all())
     ])
+
+    # role = serializers.CharField(required=True, validators=validate_role)
 
     def get_token(self, obj):
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER

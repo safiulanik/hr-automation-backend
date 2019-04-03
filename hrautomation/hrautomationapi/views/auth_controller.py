@@ -5,7 +5,7 @@ from ..serializers.auth_serializer import UserSerializer, UserSerializerWithToke
 
 
 class Login(APIView):
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request):
         serializer = UserSerializer(request.user)

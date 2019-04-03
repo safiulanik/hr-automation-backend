@@ -9,9 +9,12 @@ from rest_framework import status
 
 
 class RequestListAPIView(ListAPIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     serializer_class = RequestSerializer
-    queryset = Request.objects.all()
+
+    def get_queryset(self):
+        user = self.request.user
+        return Request.objects.filter(create_uid=user.id)
 
 
 class RequestCreateAPIView(CreateAPIView):
