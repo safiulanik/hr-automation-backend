@@ -23,4 +23,6 @@ Run the following commands in terminal to run the project:
  ```
 
  - `cd ..`
+ - `./manage.py migrate`
  - `./manage.py runserver`
+ 
