@@ -1,6 +1,8 @@
 HR Automation Backend
 =====================
 
+Recommended python version: 3.6+
+
 Run the following commands in terminal to run the project:
 
  - `git clone https://github.com/safiulanik/hr-automation-backend.git`
