@@ -3,6 +3,7 @@ from rest_framework_jwt.settings import api_settings
 import re
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
+from hrautomation.local_settings import EMAIL_DOMAIN, EMAIL_DOMAIN_EXTENSION
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -13,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 def validate_email(email):
-    pattern = r"^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(misfit)\.tech$"
+    pattern = r"^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?({})\.{}".format(EMAIL_DOMAIN, EMAIL_DOMAIN_EXTENSION)
     if not re.match(pattern, email):
         raise serializers.ValidationError('Required email format: <username>@misfit.tech')
     return email
