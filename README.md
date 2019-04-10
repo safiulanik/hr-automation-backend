@@ -26,3 +26,6 @@ Run the following commands in terminal to run the project:
  - `./manage.py migrate`
  - `./manage.py runserver`
  
+
+To run the tests, move to the hrautomation folder and run the following command:
+ - `python manage.py test hrautomationapi.tests`
