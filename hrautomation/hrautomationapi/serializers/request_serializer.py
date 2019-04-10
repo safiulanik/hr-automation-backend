@@ -3,7 +3,7 @@ from ..models import Request
 from django.contrib.auth.models import User
 
 
-class RequestSerializer(serializers.ModelSerializer):
+class RequestListSerializer(serializers.ModelSerializer):
     created_by = serializers.SerializerMethodField()
     processed_by = serializers.SerializerMethodField()
     create_date = serializers.DateTimeField(format="%d.%M.%Y %H:%m")
@@ -32,7 +32,7 @@ class RequestSerializer(serializers.ModelSerializer):
                   'create_date', 'write_date', 'processed_by', 'created_by')
 
 
-class RequestUpdateSerializer(serializers.ModelSerializer):
+class RequestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Request

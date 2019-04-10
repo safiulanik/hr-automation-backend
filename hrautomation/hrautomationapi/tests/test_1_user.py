@@ -12,11 +12,12 @@ class TestUser(TestCase):
             'first_name': 'Safiul',
             'last_name': 'Kabir',
             'email': 'safiul@{}.{}'.format('gmail', 'com'),
+            'username': 'safiul@{}.{}'.format('gmail', 'com'),
             'role': 'engineer',
             'password': '12345678'
         }
         response = self.client.post(path='/api/v1/signup/', data=user_data)
-        assert response.status_code == 200
+        assert response.status_code == 201
 
     def test_02_login(self):
         login_credentials = {

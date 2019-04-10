@@ -10,7 +10,7 @@ from rest_framework import status
 
 class RequestListAPIView(ListAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = RequestSerializer
+    serializer_class = RequestListSerializer
 
     def get_queryset(self):
         user = self.request.user
@@ -31,5 +31,5 @@ class RequestCreateAPIView(CreateAPIView):
 
 class RequestRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = RequestUpdateSerializer
+    serializer_class = RequestSerializer
     queryset = Request.objects.all()
