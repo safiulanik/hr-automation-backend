@@ -31,5 +31,5 @@ class RequestCreateAPIView(CreateAPIView):
 
 class RequestRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = RequestSerializer
+    serializer_class = RequestUpdateSerializer
     queryset = Request.objects.all()
