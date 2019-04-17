@@ -1,5 +1,7 @@
 HR Automation - Backend
-=====================
+=======================
+
+This is the backend of the project. You can find the frontend [here](https://github.com/safiulanik/hr-automation-client)
 
 Features
 --------
