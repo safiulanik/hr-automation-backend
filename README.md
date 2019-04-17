@@ -1,6 +1,31 @@
-HR Automation Backend
+HR Automation - Backend
 =====================
 
+Features
+--------
+ - Self registration with roles ('engineer', 'manager', 'hr')
+ - User login
+ - Track requests
+
+For Engineer role:
+ - Create new request
+ - View all requests of current user
+ - Update/Delete existing requests
+
+For HR role:
+ - View all requests made by all users
+ - Process requests
+ - Create new request
+ - Update/Delete existing requests
+
+For manager:
+ - View requests with hr_reviewed status
+ - Process requests
+ - Create new request
+ - Update/Delete requests
+
+Installation
+------------
 Recommended python version: 3.6+
 
 Run the following commands in terminal to run the project:
